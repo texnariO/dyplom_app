@@ -15,6 +15,7 @@ val onBoardItems = listOf(
         R.string.first_board_title,
         R.string.first_board_desc
     ),
+    //TODO Change
     onBoardingItem(
         R.mipmap.ic_launcher_logo,
         R.string.second_board_title,
