@@ -72,6 +72,7 @@ fun onBoardingScreen(
 fun OnBoardingItem(
     item: onBoardingItem
 ) {
+    //TODO
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
