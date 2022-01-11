@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DyplomApp</string>
+    <string name="first_board_title">First Board Title</string>
+    <string name="first_board_desc">First board desc</string>
+    <string name="second_board_title">Second board Title</string>
+    <string name="second_board_desc">Second board Desc</string>
+    <string name="last_board_title">Last Screen Title</string>
+    <string name="last_board_desc">Last Screen Desc</string>
+    <string name="skip_on_board">Skip</string>
+</resources>
