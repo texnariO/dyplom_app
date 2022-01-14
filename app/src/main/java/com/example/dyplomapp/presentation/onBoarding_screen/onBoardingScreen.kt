@@ -16,6 +16,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,13 +26,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.dyplomapp.presentation.theme.SpaseMedium
 import com.example.dyplomapp.R
 import com.example.dyplomapp.data.onBoardItems
 import com.example.dyplomapp.data.onBoardingItem
-import com.example.dyplomapp.presentation.theme.Components
-import com.example.dyplomapp.presentation.theme.Secondary
-import com.example.dyplomapp.presentation.theme.SpaseSmall
+import com.example.dyplomapp.presentation.theme.*
+import com.example.dyplomapp.util.Screens
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -44,7 +43,7 @@ fun onBoardingScreen(
 ) {
     val scope = rememberCoroutineScope()
     Column(Modifier.fillMaxSize()) {
-       TopSection()
+       TopSection(navController)
 
         val items = onBoardItems
         val state = rememberPagerState(pageCount = items.size)
@@ -57,8 +56,10 @@ fun onBoardingScreen(
             page -> OnBoardingItem(items[page])
 
         }
-
-        BottomSection(size = 3, index = state.currentPage) {
+        BottomSection(
+            size = 3,
+            index = state.currentPage,
+        ) {
             if(state.currentPage+1 < items.size)
                 scope.launch {
                     state.scrollToPage(state.currentPage)
@@ -78,11 +79,19 @@ fun OnBoardingItem(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        Image(painter = painterResource(id = item.image), contentDescription =null )
+        Image(
+            painter = painterResource(id = item.image),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(0.5f)
+            //modifier = Modifier.scale(12f)
+        )
+        Spacer(modifier = Modifier.height(SpaseMedium))
         Text(
             text = stringResource(id = item.title ),
-            style = MaterialTheme.typography.body1
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier
         )
+        Spacer(modifier = Modifier.height(SpaseMedium))
         Text(
             text =  stringResource(id = item.desc),
             style = MaterialTheme.typography.h1,
@@ -92,7 +101,9 @@ fun OnBoardingItem(
 }
 
 @Composable
-fun TopSection() {
+fun TopSection(
+    navController: NavController
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -107,7 +118,10 @@ fun TopSection() {
         }
 
         TextButton(
-            onClick = {  },
+            onClick = {
+                      navController.popBackStack()
+                navController.navigate(Screens.RegisterScreen.route)
+            },
             modifier = Modifier.align(Alignment.CenterEnd)
         ) {
             Text(text = stringResource(id = R.string.skip_on_board),color = MaterialTheme.colors.onBackground)
@@ -165,7 +179,7 @@ fun Indicator(isSelected: Boolean) {
             .clip(CircleShape)
             .background(
                 if (isSelected) Components
-                else Secondary
+                else SecondaryGray
             )
     ){
 

@@ -11,18 +11,18 @@ data class onBoardingItem(
 val onBoardItems = listOf(
     //TODO Замінити ic.logo на картінки
     onBoardingItem(
-        R.mipmap.ic_launcher_logo,
+        R.drawable.ic_logo_image_ed,
         R.string.first_board_title,
         R.string.first_board_desc
     ),
     //TODO Change
     onBoardingItem(
-        R.mipmap.ic_launcher_logo,
+        R.drawable.ic_logo_image_ed,
         R.string.second_board_title,
         R.string.second_board_desc
     ),
     onBoardingItem(
-        R.mipmap.ic_launcher_logo,
+        R.drawable.ic_logo_image_ed,
         R.string.last_board_title,
         R.string.last_board_desc
     )

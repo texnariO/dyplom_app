@@ -1,6 +1,7 @@
 package com.example.dyplomapp.presentation.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -19,22 +20,32 @@ val Typography = Typography(
     body1 = TextStyle(
         fontFamily = SegoeUI,
         fontWeight = FontWeight.Normal,
-        fontSize = 24.sp
+        fontSize = 24.sp,
+        color = Color.Black
     ),
     h1 = TextStyle(
         fontFamily = SegoeUI,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 18.sp,
+        color = Color.Black
     ),
     h2 = TextStyle(
         fontFamily = SegoeUI,
         fontWeight = FontWeight.Bold,
-        fontSize = 14.sp
+        fontSize = 14.sp,
+        color = HintGray
     ),
     body2 = TextStyle(
         fontFamily = SegoeUI,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 14.sp,
+        color = HintRed
+    ),
+    h3 = TextStyle(
+        fontFamily = SegoeUI,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        color = Color.Black
     )
     /* Other default text styles to override
     button = TextStyle(

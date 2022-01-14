@@ -7,6 +7,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -31,7 +32,7 @@ fun SplashScreen(
         scale.animateTo(
             targetValue = 0.3f,
             animationSpec = tween(
-                durationMillis = 500,
+                durationMillis = 1000,
                 easing = {
                     OvershootInterpolator(2f).getInterpolation(it)
                 }
@@ -46,9 +47,10 @@ fun SplashScreen(
         contentAlignment = Alignment.Center
     ){
         Image(
-            painter = painterResource(id = R.mipmap.ic_logo_project),
+            painter = painterResource(id = R.drawable.ic_logo_image_ed),
             contentDescription = "Logo",
             modifier = Modifier.scale(scale.value)
+                .fillMaxSize()
         )
     }
 }

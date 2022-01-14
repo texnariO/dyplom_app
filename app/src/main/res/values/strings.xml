@@ -7,4 +7,11 @@
     <string name="last_board_title">Last Screen Title</string>
     <string name="last_board_desc">Last Screen Desc</string>
     <string name="skip_on_board">Skip</string>
+    <string name="register">Register</string>
+    <string name="password_visible_content_description">Hide password</string>
+    <string name="password_hidden_content_description">Show password</string>
+    <string name="this_field_cant_be_empty">This field can\'t be empty</string>
+    <string name="input_invalid_code">Input invalid code</string>
+    <string name="input_too_short_code">Min length code is 8 symbols</string>
+    <string name="code">Input invite code</string>
 </resources>

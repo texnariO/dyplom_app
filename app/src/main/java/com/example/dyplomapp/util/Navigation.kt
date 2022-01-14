@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dyplomapp.presentation.register_screen.registerScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
@@ -21,6 +22,9 @@ fun Navigation() {
         }
         composable(Screens.OnBoardingScreen.route){
             onBoardingScreen(navController = navController)
+        }
+        composable(Screens.RegisterScreen.route){
+            registerScreen(navController = navController)
         }
     }
 
