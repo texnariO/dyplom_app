@@ -6,6 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.dyplomapp.presentation.loginScreen.loginScreen
+import com.example.dyplomapp.presentation.main_screen.mainScreen
 import com.example.dyplomapp.presentation.register_screen.registerScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 
@@ -25,6 +27,12 @@ fun Navigation() {
         }
         composable(Screens.RegisterScreen.route){
             registerScreen(navController = navController)
+        }
+        composable(Screens.MainScreen.route){
+            mainScreen(navController = navController)
+        }
+        composable(Screens.LoginScreen.route){
+            loginScreen(navController = navController)
         }
     }
 

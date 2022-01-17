@@ -9,10 +9,11 @@ import androidx.compose.runtime.Composable
 
 private val LightColorPalette = lightColors(
     primary = Primary,
-    primaryVariant = Primary,
+    primaryVariant = Components,
     secondary = Secondary,
     background = Primary,
     surface = Primary,
+
 
 
     /* Other default colors to override

@@ -46,6 +46,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
         color = Color.Black
+    ),
+    h4 = TextStyle(
+    fontFamily = SegoeUI,
+    fontWeight = FontWeight.Bold,
+    fontSize = 14.sp,
+    color = Color.Black
     )
     /* Other default text styles to override
     button = TextStyle(
