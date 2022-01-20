@@ -26,4 +26,8 @@
     <string name="forgot_password">"Forgot password? "</string>
     <string name="loginButton">Log In</string>
     <string name="back_register"><![CDATA[<  Register]]></string>
+    <string name="diary">Diary</string>
+    <string name="calendar">Calendar</string>
+    <string name="messager">Messager</string>
+    <string name="profile">Profile</string>
 </resources>
