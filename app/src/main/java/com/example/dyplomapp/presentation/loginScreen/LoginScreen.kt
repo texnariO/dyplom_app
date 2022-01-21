@@ -16,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.dyplomapp.presentation.theme.SpaseMegaLarge
 import com.example.dyplomapp.R
+import com.example.dyplomapp.data.BottomNavItem
 import com.example.dyplomapp.presentation.components.StandartOutlinedTextField
 import com.example.dyplomapp.presentation.register_screen.RegisterEvent
 import com.example.dyplomapp.presentation.theme.Components
@@ -105,7 +106,7 @@ fun loginScreen(
                     //TODO
                     viewModel.onEvent(LoginEvent.Login)
                     if (viewModel.state.value.userLoginError == null && viewModel.state.value.passwordLoginError == null) {
-                        navController.navigate(Screens.MainScreen.route)
+                        navController.navigate(BottomNavItem.DiarFragmentScreen.route)
                     }
                 },
                 modifier = Modifier

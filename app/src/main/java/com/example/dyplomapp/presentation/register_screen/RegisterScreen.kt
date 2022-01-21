@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.dyplomapp.R
+import com.example.dyplomapp.data.BottomNavItem
 import com.example.dyplomapp.presentation.components.StandartOutlinedTextField
 import com.example.dyplomapp.presentation.theme.*
 import com.example.dyplomapp.util.Screens
@@ -78,7 +79,7 @@ fun registerScreen(
                 //TODO
                     viewModel.onEvent(RegisterEvent.Register)
                     if (viewModel.state.value.userInviteCodeError == null) {
-                        navController.navigate(Screens.MainScreen.route)
+                        navController.navigate(BottomNavItem.DiarFragmentScreen.route)
                     }
                 },
                 modifier = Modifier

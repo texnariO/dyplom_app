@@ -1,48 +1,28 @@
-package com.example.dyplomapp.presentation.main_screen
+package com.example.dyplomapp.presentation.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.dyplomapp.data.BottomNavItem
-import com.example.dyplomapp.data.bottomNavItems
 import com.example.dyplomapp.presentation.theme.Components
 import com.example.dyplomapp.presentation.theme.Secondary
 
-
 @ExperimentalAnimationApi
 @Composable
-fun mainScreen(
-    navController: NavController
-) {
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar(
-                items = bottomNavItems,
-                navController = navController,
-                onItemClick = {
-                    navController.navigate(it.route)
-                }
-            )
-        }
-    ) {
-
-    }
-}
-
-@ExperimentalAnimationApi
-@Composable
-fun BottomNavigationBar(
+fun StandartBottomNavigationBar(
     items: List<BottomNavItem>,
     navController: NavController,
     modifier: Modifier = Modifier,
@@ -55,7 +35,7 @@ fun BottomNavigationBar(
         elevation = 5.dp
     ) {
         items.forEach {
-            item->
+                item->
             val selected = item.route == backStackEntry.value?.destination?.route
             val contentColor = if(selected) Components else MaterialTheme.colors.onBackground
             BottomNavigationItem(
@@ -64,11 +44,8 @@ fun BottomNavigationBar(
                 selectedContentColor = contentColor,
                 unselectedContentColor = MaterialTheme.colors.onBackground,
                 icon = {
-                    Row(
-                        modifier = Modifier
-                            .padding(12.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    Column(
+                        horizontalAlignment = CenterHorizontally
                     ){
                         Icon(
                             imageVector = item.icon,
@@ -79,7 +56,8 @@ fun BottomNavigationBar(
                             visible = selected
                         ) {
                             Text(
-                                text = stringResource(id = item.name)
+                                text = stringResource(id = item.name),
+                                fontSize = 12.sp
                             )
                         }
                     }
@@ -88,4 +66,3 @@ fun BottomNavigationBar(
         }
     }
 }
-
