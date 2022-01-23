@@ -1,6 +1,7 @@
 package com.example.dyplomapp.util
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.material.ExperimentalMaterialApi
 import com.example.dyplomapp.presentation.onBoarding_screen.onBoardingScreen
 import com.example.dyplomapp.presentation.splash_screen.SplashScreen
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import com.example.dyplomapp.presentation.main_screen.fragments.profile.profileS
 import com.example.dyplomapp.presentation.register_screen.registerScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @ExperimentalPagerApi
 @Composable

@@ -2,13 +2,10 @@ package com.example.dyplomapp.presentation.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -26,13 +23,15 @@ fun StandartBottomNavigationBar(
     items: List<BottomNavItem>,
     navController: NavController,
     modifier: Modifier = Modifier,
-    onItemClick: (BottomNavItem) -> Unit
+    onItemClick: (BottomNavItem) -> Unit,
+    cutoutShape: CornerBasedShape
 ) {
     val backStackEntry = navController.currentBackStackEntryAsState()
-    BottomNavigation(
+    BottomAppBar(
         modifier = modifier,
         backgroundColor = Secondary,
-        elevation = 5.dp
+        elevation = 5.dp,
+        cutoutShape = cutoutShape
     ) {
         items.forEach {
                 item->

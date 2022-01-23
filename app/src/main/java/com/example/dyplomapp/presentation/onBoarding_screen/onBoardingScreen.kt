@@ -46,8 +46,9 @@ fun onBoardingScreen(
        TopSection(navController)
 
         val items = onBoardItems
-        val state = rememberPagerState(pageCount = items.size)
+        val state = rememberPagerState()
         HorizontalPager(
+            count = 3,
             state = state,
             modifier = Modifier
                 .fillMaxSize()
