@@ -1,8 +1,11 @@
 package com.example.dyplomapp.presentation.main_screen.fragments.diary
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.verticalScroll
@@ -24,6 +27,7 @@ import com.example.dyplomapp.presentation.components.LessonsScheduleItem
 import com.example.dyplomapp.presentation.components.StandartBottomNavigationBar
 import com.example.dyplomapp.presentation.theme.Components
 import com.example.dyplomapp.presentation.theme.Secondary
+import com.example.dyplomapp.util.Screens
 import com.example.dyplomapp.util.listDays
 import com.example.dyplomapp.util.listLessons
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -35,6 +39,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter.ofPattern
 import androidx.compose.material.Text as Text
 
+@ExperimentalFoundationApi
 @ExperimentalMaterialApi
 @ExperimentalPagerApi
 @ExperimentalAnimationApi
@@ -87,23 +92,23 @@ fun diaryScreen(
         //  viewModel.state.value.mounth = LocalDate.now().format(ofPattern("MMMM"))
 
         val pagerState = rememberPagerState()
-        Box(
+        BoxWithConstraints(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.BottomCenter
         ) {
             DropdownMenu(
                 expanded = expandeds,
                 onDismissRequest = { expandeds = false },
-               // offset = DpOffset(maxWidth/2,maxHeight-maxHeight/3)
+                offset = DpOffset(maxWidth*0.33f,maxHeight*0.66f)
                 /*modifier = Modifier.align(Alignment.CenterHorizontally)*/
 
             ) {
-                DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-                    Text("Settings")
+                DropdownMenuItem(onClick = { navController.navigate(Screens.NoteScreen.route) }) {
+                    Text(stringResource(id = R.string.note))
                 }
                 Divider()
-                DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-                    Text("Send Feedback")
+                DropdownMenuItem(onClick = {  navController.navigate(Screens.ReminderScreen.route)}) {
+                    Text(stringResource(id = R.string.reminder))
                 }
             }
         }
@@ -125,13 +130,14 @@ fun diaryScreen(
 @Composable
 fun NavigateTabs(viewModel: DiaryViewModel,pagerState: PagerState) {
     val scope = rememberCoroutineScope()
+
     TabRow(
         selectedTabIndex = viewModel.state.value.indexDay,
         modifier = Modifier.padding(top = 20.dp)
     ) {
         listDays.forEachIndexed { index, tab ->
             Tab(
-                selected = index == viewModel.state.value.indexDay,
+                selected = index == viewModel.state.value.indexDay-1,
                 onClick = {
                           scope.launch {
                               viewModel.onEvent(DiaryEvent.changeDay(index))
@@ -155,6 +161,7 @@ fun NavigateTabs(viewModel: DiaryViewModel,pagerState: PagerState) {
     }
 }
 
+@ExperimentalFoundationApi
 @ExperimentalPagerApi
 @Composable
 fun NavigateTabsContent(viewModel: DiaryViewModel,pagerState: PagerState) {
@@ -165,18 +172,18 @@ fun NavigateTabsContent(viewModel: DiaryViewModel,pagerState: PagerState) {
         NavigateRow(viewModel = viewModel)
     }
 }
+@ExperimentalFoundationApi
 @Composable
 fun NavigateRow(
     viewModel: DiaryViewModel
 ) {
     val scrolState = rememberScrollState()
     Column(
-
         modifier = Modifier
-            .padding(start = 20.dp, end = 20.dp, top = 20.dp)
+            .padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 100.dp)
             .fillMaxSize()
             .verticalScroll(scrolState),
-        horizontalAlignment = Alignment.CenterHorizontally
+     //  cells = GridCells.Fixed(1)
     ) {
         //val nameDay = checkDay(viewModel.state.value.indexDay)
         //TODO Розширити

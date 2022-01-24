@@ -10,7 +10,7 @@ data class DiaryState(
         0
     }
     else {
-        indexStartDay - 1
+        indexStartDay - 2
     },
     var number: Int = 0,
     var mounth: String = ""

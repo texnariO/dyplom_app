@@ -3,6 +3,7 @@ package com.example.dyplomapp.util
 import androidx.compose.ui.res.stringResource
 import com.example.dyplomapp.R
 import com.example.dyplomapp.data.LectureItem
+import com.example.dyplomapp.data.ShortMessItem
 
 val listLessons = listOf(
     LectureItem(
@@ -48,4 +49,20 @@ val listDays = listOf(
     R.string.wednesday,
     R.string.thursday,
     R.string.friday,
+)
+
+val listMessItem = listOf(
+    ShortMessItem(
+        "Name First",
+        "19:00",
+        "Hello last message test",
+        true
+    ),
+    ShortMessItem(
+        "Name Secondary",
+        "21:00",
+        "Hello last message test",
+        false
+    )
+
 )

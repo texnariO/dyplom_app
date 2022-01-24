@@ -1,5 +1,6 @@
 package com.example.dyplomapp.presentation.components
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -22,7 +23,7 @@ import com.example.dyplomapp.presentation.theme.SecondaryNotActive
 import com.example.dyplomapp.presentation.theme.SpaseLarge
 import com.example.dyplomapp.util.listLessons
 
-
+@ExperimentalFoundationApi
 @Composable
 fun LessonsScheduleItem(
     thisLast: Boolean = false,
@@ -69,12 +70,14 @@ fun LessonsScheduleItem(
                 Text(
                     text = lectureItem.lesson,
                     modifier = Modifier.align(Alignment.TopStart),
-                    color = color
+                    color = color,
+                    style = MaterialTheme.typography.h5
                 )
                 Text(
                     text = lectureItem.clas,
                     modifier = Modifier.align(Alignment.BottomEnd),
-                    color = color
+                    color = color,
+                    style = MaterialTheme.typography.h5
                 )
                 Spacer(modifier = Modifier.height(SpaseLarge*3))
                 Text(
@@ -84,27 +87,17 @@ fun LessonsScheduleItem(
                         append(lectureItem.endLesson)
                     },
                     modifier = Modifier.align(Alignment.TopEnd),
-                    color = color
+                    color = color,
+                    style = MaterialTheme.typography.h5
                 )
                 Text(
                     text = lectureItem.homeWork,
                     modifier = Modifier.align(Alignment.BottomStart),
-                    color = color
+                    color = color,
+                    style = MaterialTheme.typography.h5
                 )
             }
         }
     }
 }
-/*
-@Preview(showBackground = true)
-@Composable
-fun Test() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        listLessons.forEachIndexed {
-            index, lectureItem ->
-            LessonsScheduleItem(lectureItem = lectureItem, number = index+1,
-                thisLast = index == listLessons.size-1, thisActive = index != 0
-            )
-        }
-    }
-}*/
+
