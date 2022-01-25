@@ -60,7 +60,7 @@ fun ShortInfoMessage(
                         text = messItem.nameUser,
                         style = MaterialTheme.typography.h5,
                         color = Black,
-                        modifier = Modifier.align(Alignment.TopStart)
+                        modifier = Modifier.align(Alignment.TopStart).padding(top = 10.dp)
                     )
                     Text(
                         text = messItem.timeMess,
