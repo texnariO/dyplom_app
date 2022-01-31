@@ -1,15 +1,15 @@
 package com.example.dyplomapp.util
 
-sealed class Resourcess<T>(
+sealed class Resourses<T>(
     val data: T? = null,
     val message: String? = null
 ){
     class Success<T>(
         data: T
-    ): Resourcess<T>(data)
+    ): Resourses<T>(data)
 
     class Error<T>(
         message: String?,
         data: T?=null
-    ): Resourcess<T>(data,message)
+    ): Resourses<T>(data,message)
 }

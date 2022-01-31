@@ -49,4 +49,6 @@
     <string name="marks_and_avg">Marks and average score</string>
     <string name="settings">Settings</string>
     <string name="log_out">Log out</string>
+    <string name="unknownError">Unknown Error</string>
+    <string name="email">Input email</string>
 </resources>
