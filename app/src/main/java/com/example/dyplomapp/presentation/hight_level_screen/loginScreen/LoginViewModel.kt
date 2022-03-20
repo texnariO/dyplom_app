@@ -1,8 +1,10 @@
 package com.example.dyplomapp.presentation.hight_level_screen.loginScreen
 
+import android.util.Patterns
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.dyplomapp.presentation.hight_level_screen.register_data_set_screen.RegisterDataState
 import com.example.dyplomapp.util.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -49,6 +51,12 @@ class LoginViewModel @Inject constructor(): ViewModel() {
         if(loginTrimmed.length < Constants.MIN_LOGIN_LENGTH){
             _state.value = _state.value.copy(
                 userLoginError = LoginState.UserLoginError.InputTooShort
+            )
+            return
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(loginTrimmed).matches()){
+            _state.value = _state.value.copy(
+                userLoginError = LoginState.UserLoginError.InvalidLoginBase
             )
             return
         }

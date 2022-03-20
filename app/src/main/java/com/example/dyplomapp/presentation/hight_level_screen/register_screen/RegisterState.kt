@@ -1,4 +1,4 @@
-package com.example.dyplomapp.presentation.hight_level_screen.onBoarding_screen.register_screen
+package com.example.dyplomapp.presentation.hight_level_screen.register_screen
 
 import com.example.dyplomapp.di.DatabaseApi
 

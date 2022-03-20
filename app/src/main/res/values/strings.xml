@@ -51,4 +51,10 @@
     <string name="log_out">Log out</string>
     <string name="unknownError">Unknown Error</string>
     <string name="email">Input email</string>
+    <string name="input_invalid_email">Input invalid email</string>
+    <string name="input_not_uniq_email">This email is used already</string>
+    <string name="input_password_and_repeat_not_correct">Passwords are not the same</string>
+    <string name="passwordRepeat">Repeat password</string>
+    <string name="go_back"><![CDATA[< Go back]]></string>
+    <string name="sign_up">Sign up</string>
 </resources>

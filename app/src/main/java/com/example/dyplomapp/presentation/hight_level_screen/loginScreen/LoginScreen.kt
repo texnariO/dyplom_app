@@ -63,9 +63,7 @@ fun loginScreen(
                     LoginState.UserLoginError.InputTooShort ->{
                         stringResource(id = R.string.input_too_short_login)
                     }
-                    null -> {
-                        stringResource(id = R.string.this_field_cant_be_empty)
-                    }
+                    null -> ""
                     LoginState.UserLoginError.InvalidLoginBase -> TODO()
                 },
                 keyboardType = KeyboardType.Text,

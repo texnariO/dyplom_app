@@ -1,4 +1,4 @@
-package com.example.dyplomapp.presentation.hight_level_screen.onBoarding_screen.register_screen
+package com.example.dyplomapp.presentation.hight_level_screen.register_screen
 
 import android.util.Log
 import androidx.compose.runtime.State
@@ -54,10 +54,20 @@ class RegisterViewModel @Inject constructor(
             )
             return
         }
-        _state.value = _state.value.copy(
-            isLoading = true
-        )
-        viewModelScope.launch(Dispatchers.Main) {
+
+
+        val numberInCode = inviteCode.any{ it.isDigit() }
+        if (!numberInCode){
+            _state.value = _state.value.copy(
+                userInviteCodeError =  RegisterState.UserInviteCodeError.InvalidCode,
+            )
+            return
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            _state.value = _state.value.copy(
+                isLoading = true
+            )
             try {
                 val requestBody = _state.value.api.checkInviteCode(inviteCode)
                 if(requestBody.isSuccessful){
@@ -78,14 +88,5 @@ class RegisterViewModel @Inject constructor(
                 Timber.tag("InviteCodeViewModel").e(e, "Check Invite Code")
             }
         }
-        val numberInCode = inviteCode.any{ it.isDigit() }
-        if (!numberInCode){
-            _state.value = _state.value.copy(
-                userInviteCodeError =  RegisterState.UserInviteCodeError.InvalidCode,
-            )
-            return
-        }
-
-
     }
 }

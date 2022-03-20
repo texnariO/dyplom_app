@@ -9,6 +9,7 @@ sealed class Screens(val route: String){
     object SpalshScreen: Screens("splash_screen")
     object OnBoardingScreen: Screens("on_boarding_screen")
     object RegisterScreen: Screens("register_screen")
+    object RegisterScreenSetData: Screens("register_screen_set_data/{idInviteCode}")
     object LoginScreen: Screens("login_screen")
     //object MainScreen: Screens("main_screen")
     object NoteScreen: Screens("note_screen")

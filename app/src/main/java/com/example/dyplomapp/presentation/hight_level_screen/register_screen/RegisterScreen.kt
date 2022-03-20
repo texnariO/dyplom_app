@@ -1,4 +1,4 @@
-package com.example.dyplomapp.presentation.hight_level_screen.onBoarding_screen.register_screen
+package com.example.dyplomapp.presentation.hight_level_screen.register_screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.dyplomapp.R
-import com.example.dyplomapp.data.BottomNavItem
 import com.example.dyplomapp.presentation.components.StandartOutlinedTextField
 import com.example.dyplomapp.presentation.theme.*
 import com.example.dyplomapp.util.Screens
@@ -70,19 +69,22 @@ fun registerScreen(
                         stringResource(id = R.string.input_too_short_code)
                     }
                     null -> ""
-                    else -> {
-                        ""
-                    }
                 },
                 keyboardType = KeyboardType.Text
             )
             Spacer(modifier = Modifier.height(SpaseMedium))
             Button(
                 onClick = {
-                //TODO
                     viewModel.onEvent(RegisterEvent.Register)
-                    if (viewModel.state.value.userInviteCodeError == null && viewModel.state.value.isLoading) {
-                        navController.navigate(BottomNavItem.DiarFragmentScreen.route)
+                    while(viewModel.state.value.isLoading){
+                        println(viewModel.state.value.isLoading)
+                        println(viewModel.state.value.id_inviteCode)
+                    }
+                   /* viewModel.onEvent(RegisterEvent.Register)*/
+                    println(viewModel.state.value.isLoading)
+                    println(viewModel.state.value.id_inviteCode)
+                    if (state.userInviteCodeError == null && state.id_inviteCode != null) {
+                        navController.navigate("register_screen_set_data/${state.id_inviteCode}")
                     }
                 },
                 modifier = Modifier

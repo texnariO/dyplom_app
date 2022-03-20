@@ -6,9 +6,11 @@ import androidx.compose.material.ExperimentalMaterialApi
 import com.example.dyplomapp.presentation.hight_level_screen.onBoarding_screen.onBoardingScreen
 import com.example.dyplomapp.presentation.hight_level_screen.splash_screen.SplashScreen
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.dyplomapp.data.BottomNavItem
 import com.example.dyplomapp.presentation.medium_level_screen.classmate_screen.ClassmateScreen
 import com.example.dyplomapp.presentation.hight_level_screen.loginScreen.loginScreen
@@ -16,10 +18,11 @@ import com.example.dyplomapp.presentation.hight_level_screen.main_screen.fragmen
 import com.example.dyplomapp.presentation.hight_level_screen.main_screen.fragments.diary.diaryScreen
 import com.example.dyplomapp.presentation.hight_level_screen.main_screen.fragments.message.messageScreen
 import com.example.dyplomapp.presentation.hight_level_screen.main_screen.fragments.profile.profileScreen
+import com.example.dyplomapp.presentation.hight_level_screen.register_data_set_screen.RegisterDataScreen
 import com.example.dyplomapp.presentation.medium_level_screen.marks_screen.MarksScreen
 import com.example.dyplomapp.presentation.medium_level_screen.note_and_reminder_screen.NoteScreen
 import com.example.dyplomapp.presentation.medium_level_screen.note_and_reminder_screen.ReminderScreen
-import com.example.dyplomapp.presentation.hight_level_screen.onBoarding_screen.register_screen.registerScreen
+import com.example.dyplomapp.presentation.hight_level_screen.register_screen.registerScreen
 import com.example.dyplomapp.presentation.medium_level_screen.settings_screen.SettingsScreen
 import com.example.dyplomapp.presentation.medium_level_screen.timetable_screen.TimetableScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -43,6 +46,17 @@ fun Navigation() {
         }
         composable(Screens.RegisterScreen.route){
             registerScreen(navController = navController)
+        }
+        composable(
+            Screens.RegisterScreenSetData.route,
+            arguments = listOf(navArgument("idInviteCode"){
+                type = NavType.IntType
+            })
+        ){
+            RegisterDataScreen(
+                navController = navController,
+                it.arguments!!.getInt("idInviteCode")
+            )
         }
         composable(Screens.LoginScreen.route){
             loginScreen(navController = navController)
